@@ -1,0 +1,140 @@
+import traci
+import sumolib
+
+# --- Configurable Parameters ---
+EV_ID = "v_0"
+tB = 2.0       # headway per vehicle [s]
+t_safe = 2.0   # safety buffer [s]
+
+# TLS and incoming lanes for control
+TLS_CONFIG = {
+    "J1": ["E12_1", "E12_2"],
+    "J3": ["E21_1", "E21_2"],
+    "J5": ["E22_1", "E22_2"],
+}
+
+def compute_clearance_time(n_waiting, tB, t_safe):
+    return (n_waiting + 1) * tB + t_safe
+
+def get_waiting_vehicle_count(lanes):
+    count = 0
+    for lane in lanes:
+        for veh_id in traci.lane.getLastStepVehicleIDs(lane):
+            if traci.vehicle.getSpeed(veh_id) < 0.1:
+                count += 1
+    return count
+
+def force_green(tls_id):
+    logic = traci.trafficlight.getAllProgramLogics(tls_id)[0]
+    for i, p in enumerate(logic.getPhases()):
+        if "G" in p.state:
+            traci.trafficlight.setPhase(tls_id, i)
+            print(f"[GreenWave] Preempted {tls_id} at phase {i}")
+            break
+
+# Start SUMO with GUI
+#sumo_cmd = ["sumo-gui", "-c", "berlin_original.sumocfg","--quit-on-end"]
+sumo_cmd = [
+    "sumo-gui",
+    "-c", "berlin_original.sumocfg",
+    "--begin", "57600",       # 16:00:00
+    "--end", "61200"]         # 17:00:00
+         
+ 
+
+traci.start(sumo_cmd)
+MAX_TIME = 61200
+
+try:
+    while traci.simulation.getMinExpectedNumber() > 0:
+        traci.simulationStep()
+        current_time = traci.simulation.getTime() #ana
+
+        if current_time >= MAX_TIME:
+            print(f"Reached max simulation time {MAX_TIME}, stopping.")
+            break
+        
+
+        if EV_ID not in traci.vehicle.getIDList():
+            continue
+
+        # Current EV status
+        ev_lane = traci.vehicle.getLaneID(EV_ID)
+        ev_pos = traci.vehicle.getLanePosition(EV_ID)
+        ev_speed = traci.vehicle.getSpeed(EV_ID)
+        
+        #Solution 3 
+        lane_length = traci.lane.getLength(ev_lane)
+        dist_to_tls = lane_length - ev_pos
+        print(f"\n[TRACE] EV Lane: {ev_lane} | Speed: {ev_speed:.2f} m/s | Position: {ev_pos:.2f} / {lane_length:.2f}")
+   
+        #Solution 3 (lane.)
+        for tls_id, lanes in TLS_CONFIG.items():
+            if ev_lane in lanes:
+                # 1. Count waiting vehicles
+                n_waiting = get_waiting_vehicle_count([ev_lane])
+
+                # 2. Compute clearance time and trigger distance
+                T_free = compute_clearance_time(n_waiting, tB, t_safe)
+                d_trigger = ev_speed * T_free
+
+                # 3. Print Debug Info
+                print(f"[DEBUG] TLS: {tls_id}")
+                print(f"[DEBUG] EV is on {ev_lane}")
+                print(f"[DEBUG] n_waiting = {n_waiting}")
+                print(f"[DEBUG] T_free = {T_free:.2f} s")
+                print(f"[DEBUG] EV Speed = {ev_speed:.2f} m/s")
+                print(f"[DEBUG] Trigger Distance = {d_trigger:.2f} m")
+                print(f"[DEBUG] Distance to {tls_id} Stop Line = {dist_to_tls:.2f} m")
+
+                # 4. Trigger Preemption if Within Range
+                if dist_to_tls <= d_trigger :
+                    print(f"[TRIGGER] Preempting TLS {tls_id} for EV! (Distance = {dist_to_tls:.2f} m, Speed = {ev_speed:.2f})")
+                    force_green(tls_id)
+                
+                
+
+
+
+
+        #ORGINIALLLLLLLLLLLLLLLL
+        # for tls_id, lanes in TLS_CONFIG.items():
+        #     for lane in lanes:
+        #         if lane in ev_lane:
+        #             # Step 1: Compute n_waiting on that lane
+        #             n_waiting = get_waiting_vehicle_count([lane])
+
+        #             # Step 2: Clearance time
+        #             T_free = compute_clearance_time(n_waiting, tB, t_safe)
+
+        #             # Step 3: Trigger distance
+        #             d_trigger = ev_speed * T_free
+
+        #             # Step 4: Compute distance to stop line
+        #             lane_length = traci.lane.getLength(lane)
+        #             ev_pos = traci.vehicle.getLanePosition(EV_ID) # Get current position in laneeeee
+        #             dist_to_tls = lane_length - ev_pos
+
+                    
+
+        #              # ✅ DEBUG PRINTS
+        #             print(f"\n[DEBUG] TLS: {tls_id}")
+        #             print(f"[DEBUG] EV Lane: {ev_lane}")
+        #             print(f"[DEBUG] n_waiting = {n_waiting}")
+        #             print(f"[DEBUG] T_free = {T_free:.2f} s")
+        #             print(f"[DEBUG] EV Speed = {ev_speed:.2f} m/s")
+        #             print(f"[DEBUG] Trigger Distance = {d_trigger:.2f} m")
+        #             print(f"[DEBUG] EV Distance to {tls_id} Stop Line = {dist_to_tls:.2f} m")              
+
+        #             # Step 5: Trigger condition
+        #             if dist_to_tls <= d_trigger:
+        #                 print(f"[INFO] EV at {ev_pos:.1f}m, TLS at {lane_length}m")
+        #                 print(f"[INFO] Triggering {tls_id} (distance = {dist_to_tls:.1f} ≤ {d_trigger:.1f})")
+        #                 force_green(tls_id)
+
+                    
+                   
+except Exception as e:
+    print("Error:", e)
+finally:
+    traci.close()

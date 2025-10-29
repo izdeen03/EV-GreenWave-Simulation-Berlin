@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-07-24 22:46:21 by Eclipse SUMO netedit Version 1.23.1
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="bus_M29" maxSpeed="13.89" vClass="bus"/>
+    <vType id="bus_M41" maxSpeed="13.89" vClass="bus"/>
+
+    <vType id="id_emv1" minGap="1.00"  maxSpeed="55" speedFactor="1.5" 
+    impatience="1.0"  vClass="emergency" guiShape="emergency"
+     color="white" accel="3.0"  decel="6.0" sigma="0.2">
+        <param key="device.bluelight.reactiondist" value="75"/>
+
+        <!-- <param key="device.bluelight.reactionprob-far" value="0.4"/>  2 -->
+        <!-- <param key="device.bluelight.reactionprob-near" value="0.85"/>  2 -->
+
+        <param key="has.bluelight.device" value="true"/>
+        <param key="jmDriveAfterRedTime" value="1000"/>
+
+        <!-- <param key="jmDriveOnWrongLane" value="true"/> 2 -->
+
+        <param key="jmIgnoreJunctionPriority" value="true"/>
+        <!-- <param key="jmIgnoreLanePriority" value="true"/> -->  <!--zeyade -->
+        <!-- <param key="jmIgnoreLaneChange" value="true"/>  -->  <!-- zeyade-->
+
+        <!-- <param key="jmIgnoreRoute" value="true"/>   -->
+        <param key="jmStopOvertaking" value="false"/>
+        <!-- <param key="laneChangeModel" value="LC2013"/>  2 -->
+        <param key="lcCooperative" value="0.0"/>
+        <param key="lcOvertakeRight" value="1"/>
+        <!-- <param key="lcPushy" value="1.0"/>  2 -->
+        <!-- <param key="lcStrategic" value="-1.0"/> 2 -->
+        <!-- <param key="teleportDisallowed" value="false"/> 2 -->
+        <!-- <param key="teleportSpeed" value="15.0"/> 2 -->
+    </vType>
+    <vType id="t_0" maxSpeed="13.89"/>
+    <!-- Routes -->
+    <route id="bus_route1" edges="E12 E13 E19 E21 E22 E30 E31">
+        <stop busStop="id_1" duration="20.00" until="30.00"/>
+    </route>
+    <route id="bus_route2" edges="E8 E26 155605343#3 E66">
+        <stop busStop="id_2" duration="20.00" until="30.00"/>
+    </route>
+    <route id="bus_route3" edges="-E7 E22 E30 E31">
+        <stop busStop="id_3" duration="20.00" until="30.00"/>
+    </route>
+    <route id="bus_route4" edges="E0 E7">
+        <stop busStop="id_4" duration="20.00" until="30.00"/>
+    </route>
+    <route id="r_0" edges="E12 E13 -E17"/>
+    <route id="r_1" edges="E12 E13 E19 131333251#1"/>
+    <route id="r_10" edges="-131333251#1 E21 E7"/>
+    <route id="r_11" edges="-E7 -E0"/>
+    <route id="r_12" edges="E0 E7"/>
+    <route id="r_13" edges="-155605284#1 E31 E39"/>
+    <route id="r_14" edges="E31 E8 E30 155605284#1"/>
+    <route id="r_15" edges="-155605284#1 E31 E8 1136034180#1"/>
+    <route id="r_16" edges="E26 E7"/>
+    <route id="r_17" edges="E0 E22"/>
+    <route id="r_18" edges="E0 155605343#3 E66"/>
+    <route id="r_19" edges="-816324771#2 E30"/>
+    <route id="r_2" edges="E12 E13 E19 E21 E7"/>
+    <route id="r_20" edges="-816324771#2 1136034180#1"/>
+    <route id="r_21" edges="E22 1136034180#1 -1136034180#1"/>
+    <route id="r_22" edges="E8 816324771#2"/>
+    <route id="r_23" edges="-1136034180#1 E26"/>
+    <route id="r_24" edges="E26 -E0"/>
+    <route id="r_25" edges="E8 E26 155605343#3 E66"/>
+    <route id="r_26" edges="-E7 155605343#3 E66"/>
+    <route id="r_27" edges="-816324771#2 E26"/>
+    <route id="r_28" edges="-816324771#2 816324771#2"/>
+    <route id="r_29" edges="-1136034180#1 816324771#2"/>
+    <route id="r_3" edges="E12 E13 E19 E21 -E0"/>
+    <route id="r_30" edges="-E39 -E40"/>
+    <route id="r_31" edges="-E39 E8"/>
+    <route id="r_32" edges="E40 E39"/>
+    <route id="r_33" edges="E40 E8"/>
+    <route id="r_34" edges="E31 -E40"/>
+    <route id="r_35" edges="68135997#1 E13 E19 E21 E22 E30 155605284#1" color="yellow"/>
+    <route id="r_36" edges="-776093907#2 E13 E19 E21 E22 E30" color="yellow"/>
+    <route id="r_37" edges="-776093907#2 -68135997#1" color="yellow"/>
+    <route id="r_38" edges="-776093907#2 E66" color="yellow"/>
+    <route id="r_39" edges="68135997#1 776093907#2" color="yellow"/>
+    <route id="r_4" edges="E12 E13 E19 E21 E22 E26"/>
+    <route id="r_5" edges="E12 E13 E19 E21 E22 816324771#2"/>
+    <route id="r_6" edges="E12 E13 E19 E21 E22 E30 E31 E8 1136034180#1"/>
+    <route id="r_7" edges="E12 E13 E19 E21 E22 E30 E31"/>
+    <route id="r_8" edges="E17 E19 131333251#1"/>
+    <route id="r_9" edges="E17 E19 E21 E22"/>
+    <route id="r_emv1" edges="E12 E13 E19 E21 E22 E30 E31 E39" color="white"/>
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <flow id="f_0" type="t_0" begin="57600.00" route="r_0" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_1" type="t_0" begin="57600.00" route="r_1" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_16" type="t_0" begin="57600.00" route="r_8" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_18" type="t_0" begin="57600.00" route="r_10" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_19" type="t_0" begin="57600.00" route="r_3" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_20" type="t_0" begin="57600.00" route="r_24" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_21" type="t_0" begin="57600.00" route="r_16" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_24" type="t_0" begin="57600.00" route="r_26" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_26" type="t_0" begin="57600.00" route="r_17" end="61200.00" vehsPerHour="5"/>
+    <flow id="f_27" type="t_0" begin="57600.00" route="r_18" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_28" type="t_0" begin="57600.00" route="r_5" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_29" type="t_0" begin="57600.00" route="r_28" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_3" type="t_0" begin="57600.00" route="r_2" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_30" type="t_0" begin="57600.00" route="r_4" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_31" type="t_0" begin="57600.00" route="r_21" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_32" type="t_0" begin="57600.00" route="r_23" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_33" type="t_0" begin="57600.00" route="r_20" end="61200.00" vehsPerHour="125"/>
+    <flow id="f_34" type="t_0" begin="57600.00" route="r_6" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_35" type="t_0" begin="57600.00" route="r_22" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_36" type="t_0" begin="57600.00" route="r_14" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_39" type="t_0" begin="57600.00" route="r_19" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_40" type="t_0" begin="57600.00" route="r_27" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_41" type="t_0" begin="57600.00" route="r_29" end="61200.00" vehsPerHour="125"/>
+    <flow id="f_42" type="t_0" begin="57600.00" route="r_13" end="61200.00" vehsPerHour="125"/>
+    <flow id="f_43" type="t_0" begin="57600.00" route="r_34" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_44" type="t_0" begin="57600.00" route="r_32" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_45" type="t_0" begin="57600.00" route="r_30" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_46" type="t_0" begin="57600.00" route="r_31" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_48" type="t_0" begin="57600.00" route="r_33" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_8" type="t_0" begin="57600.00" route="r_25" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_9" type="t_0" begin="57600.00" route="r_35" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_10" type="t_0" begin="57600.00" route="r_36" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_17" type="t_0" begin="57600.00" route="r_37" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_23" type="t_0" begin="57600.00" route="r_38" end="61200.00" vehsPerHour="58"/>
+    <flow id="f_25" type="t_0" begin="57600.00" route="r_39" end="61200.00" vehsPerHour="58"/>
+    
+
+    <flow id="f_11" type="bus_M41" begin="57660.00" color="red" line="M41" route="bus_route1" end="64800.00" vehsPerHour="12"/>
+    <flow id="f_12" type="bus_M41" begin="57720.00" color="red" line="M41" route="bus_route2" end="64800.00" vehsPerHour="12"/>
+    <flow id="f_13" type="bus_M29" begin="57840.00" color="red" line="M29" route="bus_route4" end="64800.00" vehsPerHour="6"/>
+    <flow id="f_14" type="bus_M29" begin="57840.00" color="red" line="M29" route="bus_route3" end="64800.00" vehsPerHour="6"/>
+    
+    <vehicle id="v_0" type="id_emv1" depart="59400.00" route="r_emv1"/>
+    <vehicle id="v_1" type="t_0" depart="60000.00" route="r_emv1"/>
+
+    <flow id="f_50" type="t_0" begin="61200.00" route="r_0" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_51" type="t_0" begin="61200.00" route="r_1" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_52" type="t_0" begin="61200.00" route="r_8" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_53" type="t_0" begin="61200.00" route="r_10" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_54" type="t_0" begin="61200.00" route="r_3" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_55" type="t_0" begin="61200.00" route="r_24" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_56" type="t_0" begin="61200.00" route="r_16" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_57" type="t_0" begin="61200.00" route="r_26" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_58" type="t_0" begin="61200.00" route="r_17" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_59" type="t_0" begin="61200.00" route="r_18" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_60" type="t_0" begin="61200.00" route="r_5" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_61" type="t_0" begin="61200.00" route="r_28" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_62" type="t_0" begin="61200.00" route="r_2" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_63" type="t_0" begin="61200.00" route="r_4" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_64" type="t_0" begin="61200.00" route="r_21" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_65" type="t_0" begin="61200.00" route="r_23" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_66" type="t_0" begin="61200.00" route="r_20" end="64800.00" vehsPerHour="71.01"/>
+    <flow id="f_67" type="t_0" begin="61200.00" route="r_6" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_68" type="t_0" begin="61200.00" route="r_22" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_69" type="t_0" begin="61200.00" route="r_14" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_70" type="t_0" begin="61200.00" route="r_19" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_71" type="t_0" begin="61200.00" route="r_27" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_72" type="t_0" begin="61200.00" route="r_29" end="64800.00" vehsPerHour="71.01"/>
+    <flow id="f_73" type="t_0" begin="61200.00" route="r_13" end="64800.00" vehsPerHour="71.01"/>
+    <flow id="f_74" type="t_0" begin="61200.00" route="r_34" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_75" type="t_0" begin="61200.00" route="r_32" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_76" type="t_0" begin="61200.00" route="r_30" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_77" type="t_0" begin="61200.00" route="r_31" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_78" type="t_0" begin="61200.00" route="r_33" end="64800.00" vehsPerHour="38"/>
+    <flow id="f_79" type="t_0" begin="61200.00" route="r_25" end="64800.00" vehsPerHour="38"/>
+    <vehicle id="v_0" type="id_emv1" depart="63235.00" route="r_emv1"/>
+</routes>

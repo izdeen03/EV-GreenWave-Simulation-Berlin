@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-08-15 18:29:47 by Eclipse SUMO sumo Version 1.23.1
+-->
+
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="berlin_original.net.xml"/>
+        <route-files value="berlin_original.rou.xml"/>
+        <additional-files value="berlin_original.add.xml,meandata.add.xml"/>
+        
+    </input>
+
+
+    <!-- Chose which output of the two scenarios and remove the comment to get the output that you need -->
+    <!-- azoz_output_GW -->
+    <!-- <output> -->
+        <!-- <fcd-output value="outputt/azoz_output_GW/fcd_emergency.xml"/>
+        <summary-output value="outputt/azoz_output_GW/summary.xml"/>
+        <tripinfo-output value="outputt/azoz_output_GW/tripinfo_emergency.xml"/>
+        <stop-output value="outputt/azoz_output_GW/stopinfo.xml"/>
+        <statistic-output value="outputt/azoz_output_GW/statistics.xml"/>
+        <edgedata-output value="outputt/azoz_output_GW/edgedata.xml"/>
+         -->
+        <!-- <queue-output value="outputt/azoz_output_GW/queue_emergency.xml"/>  -->
+    <!-- </output> -->
+    
+<!-- azoz_output_BaseLine -->
+    <!-- <output>
+        <fcd-output value="outputt/azoz_output_BaseLine/fcd_emergency.xml"/>
+        <summary-output value="outputt/azoz_output_BaseLine/summary.xml"/>
+        <tripinfo-output value="outputt/azoz_output_BaseLine/tripinfo_emergency.xml"/>
+        <stop-output value="outputt/azoz_output_BaseLine/stopinfo.xml"/>
+        <statistic-output value="outputt/azoz_output_BaseLine/statistics.xml"/>
+        <edgedata-output value="outputt/azoz_output_BaseLine/edgedata.xml"/>
+        <queue-output value="outputt/azoz_output_BaseLine/queue_emergency.xml"/> -->
+
+        <!-- <lanedata-output value="outputt/azoz_output_BaseLine/lanedata.xml"/> -->
+        <!-- <laneData-output.period value="60"/> -->
+    <!-- </output> -->
+
+    <time>
+        <begin value="57600"/>
+        <end value="61200"/>
+    </time>
+
+
+
+    <report>
+        <duration-log.statistics value="true"/>
+    </report>
+
+</sumoConfiguration>

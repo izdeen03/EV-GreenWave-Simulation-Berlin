@@ -1,0 +1,5 @@
+# Pandas for data manipulation and analysis
+pandas
+
+# Matplotlib for plotting and visualization
+matplotlib
