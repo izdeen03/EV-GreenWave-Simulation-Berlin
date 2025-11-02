@@ -92,47 +92,6 @@ try:
                     print(f"[TRIGGER] Preempting TLS {tls_id} for EV! (Distance = {dist_to_tls:.2f} m, Speed = {ev_speed:.2f})")
                     force_green(tls_id)
                 
-                
-
-
-
-
-        #ORGINIALLLLLLLLLLLLLLLL
-        # for tls_id, lanes in TLS_CONFIG.items():
-        #     for lane in lanes:
-        #         if lane in ev_lane:
-        #             # Step 1: Compute n_waiting on that lane
-        #             n_waiting = get_waiting_vehicle_count([lane])
-
-        #             # Step 2: Clearance time
-        #             T_free = compute_clearance_time(n_waiting, tB, t_safe)
-
-        #             # Step 3: Trigger distance
-        #             d_trigger = ev_speed * T_free
-
-        #             # Step 4: Compute distance to stop line
-        #             lane_length = traci.lane.getLength(lane)
-        #             ev_pos = traci.vehicle.getLanePosition(EV_ID) # Get current position in laneeeee
-        #             dist_to_tls = lane_length - ev_pos
-
-                    
-
-        #              # ✅ DEBUG PRINTS
-        #             print(f"\n[DEBUG] TLS: {tls_id}")
-        #             print(f"[DEBUG] EV Lane: {ev_lane}")
-        #             print(f"[DEBUG] n_waiting = {n_waiting}")
-        #             print(f"[DEBUG] T_free = {T_free:.2f} s")
-        #             print(f"[DEBUG] EV Speed = {ev_speed:.2f} m/s")
-        #             print(f"[DEBUG] Trigger Distance = {d_trigger:.2f} m")
-        #             print(f"[DEBUG] EV Distance to {tls_id} Stop Line = {dist_to_tls:.2f} m")              
-
-        #             # Step 5: Trigger condition
-        #             if dist_to_tls <= d_trigger:
-        #                 print(f"[INFO] EV at {ev_pos:.1f}m, TLS at {lane_length}m")
-        #                 print(f"[INFO] Triggering {tls_id} (distance = {dist_to_tls:.1f} ≤ {d_trigger:.1f})")
-        #                 force_green(tls_id)
-
-                    
                    
 except Exception as e:
     print("Error:", e)
